@@ -11,7 +11,7 @@ import com.ImageData.Model.ImageData;
 @Repository
 public interface ImageDtaRepo extends JpaRepository<ImageData, Long> {
 	 
-	Optional<ImageData> findByfilename(String filename);
+	Optional<ImageData> findByFilename(String filename);
 
 
 }

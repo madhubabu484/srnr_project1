@@ -1,5 +1,7 @@
 package com.ImageData.Model;
 
+import java.time.LocalDate;
+
 import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,6 +33,9 @@ public class ImageData {
 
 	@Column(name = "type")
 	private String type;
+	
+     @Column(name = "upload_Date")
+	private LocalDate uploaddate;
 
 	 @Lob
 	 @Column(name = "imagedata", columnDefinition = "LONGBLOB")
