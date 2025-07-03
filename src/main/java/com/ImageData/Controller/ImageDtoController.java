@@ -17,9 +17,13 @@ import com.ImageData.Model.ImageData;
 import com.ImageData.Service.ImageDataService;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RestController
@@ -32,30 +36,27 @@ public class ImageDtoController {
 
 	@PostMapping("/uploadImage")
 	public ResponseEntity<?> uploadImage(@RequestParam("file") MultipartFile file) throws IOException {
-	    String uploadedFilePath = dataservice.uploadimage(file);
-	    
-	    if (uploadedFilePath != null && !uploadedFilePath.isEmpty()) {
-	        return ResponseEntity.ok(uploadedFilePath);
-	    } else {
-	        throw new RuntimeException("File upload failed. Please try again later.");
-	    }
+		String uploadedFilePath = dataservice.uploadimage(file);
+
+		if (uploadedFilePath != null && !uploadedFilePath.isEmpty()) {
+			return ResponseEntity.ok(uploadedFilePath);
+		} else {
+			throw new RuntimeException("File upload failed. Please try again later.");
+		}
 	}
-	
-	
-	  @GetMapping("/getbyname/{name}")
-	 public ResponseEntity<?> downloadimage(@PathVariable ("name") String filename)
-	 {
-		  
+
+
+	@GetMapping("/getbyfilename/{filename}")
+	public ResponseEntity<?> downloadimage(@PathVariable ("filename") String filename)
+	{
+
 		byte [] imgdata =  dataservice.findbyname(filename);
-		
-		   return ResponseEntity.status(HttpStatus.OK)
-				                .contentType(MediaType.valueOf("image/jpeg"))
-				                .body(imgdata);
-		
-		           
-	 }
-	  
+
+		return ResponseEntity.status(HttpStatus.OK)
+				.contentType(MediaType.valueOf("image/jpeg"))
+				.body(imgdata);
+
+
+	}
+
 }
-
-
-	  

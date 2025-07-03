@@ -1,0 +1,7 @@
+com\ImageData\Repository\ImageDtaRepo.class
+com\ImageData\Controller\ImageDtoController.class
+com\ImageData\Model\ImageData$ImageDataBuilder.class
+com\ImageData\FileUploadAndDownloadApplication.class
+com\ImageData\Utility\ImageUtility.class
+com\ImageData\Service\ImageDataService.class
+com\ImageData\Model\ImageData.class
